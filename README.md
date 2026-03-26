@@ -13,7 +13,7 @@ Este repositório é dedicado à minha jornada de aprendizado e aplicação no d
 - `CSS/` → fundamentos e projetos iniciais  
 - `HTML/` → fundamentos e projetos iniciais  
 - `JavaScript/` → lógica e interatividade  
-- `react/` → aplicações modernas  
+- `Projects/` → projetos realizados 
 
 ## 🎯 Objetivo
 
