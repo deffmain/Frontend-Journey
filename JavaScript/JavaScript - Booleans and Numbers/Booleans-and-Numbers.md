@@ -1,6 +1,6 @@
 # JavaScript — Booleanos e Números
 
-> Anotações práticas sobre o tipo `Number`, operadores aritméticos, coerção de tipo, precedência, incremento/decremento e atribuição composta.
+> Anotações práticas sobre o tipo `Number`, operadores aritméticos, coerção de tipo, precedência, incremento/decremento, atribuição composta, booleanos, operadores unários, operações bit a bit e estruturas condicionais.
 
 ---
 
@@ -637,3 +637,338 @@ Existe um operador de atribuição composta para cada operador aritmético. Alé
 
 - **Resto (`%=`)** — divide a variável pelo número especificado e atribui o resto a ela.
 - **Exponenciação (`**=`)** — eleva a variável à potência do número especificado e reatribui o resultado.
+
+---
+
+## Booleanos
+
+Booleanos são um tipo de dado que possui apenas os valores `true` e `false`. Eles permitem que você faça algo com base em condições — por exemplo, decidir se alguém pode acessar um recurso no seu app.
+
+```js
+let isOldEnoughToDrive = true;
+
+if (isOldEnoughToDrive) {
+  console.log("You're old enough to drive"); // You're old enough to drive
+} else {
+  console.log("Sorry, you are not old enough to drive");
+}
+```
+
+### Operadores de igualdade (`==` e `===`)
+
+Para comparar dois valores, você pode usar o operador de igualdade (`==`) ou o de igualdade estrita (`===`). O resultado é sempre um booleano.
+
+O operador de igualdade (`==`) faz **coerção de tipo** antes de comparar:
+
+```js
+console.log(5 == "5"); // true
+```
+
+O JavaScript converte a string `"5"` no número `5` e verifica se são iguais.
+
+Já o operador de igualdade estrita (`===`) **não** faz coerção — compara tipo **e** valor:
+
+```js
+console.log(5 === '5'); // false
+```
+
+Como o tipo string não é o mesmo que o tipo number, o resultado é `false`.
+
+### Operadores de desigualdade (`!=` e `!==`)
+
+Para verificar se algo **não** é igual, use o operador de desigualdade (`!=`) ou o de desigualdade estrita (`!==`).
+
+O operador de desigualdade (`!=`) faz coerção de tipo:
+
+```js
+console.log(5 != "5"); // false
+```
+
+A string `"5"` é convertida para número antes da comparação; como os valores ficam iguais, o resultado é `false`.
+
+O operador de desigualdade estrita (`!==`) não faz coerção:
+
+```js
+console.log(5 !== "5"); // true
+```
+
+Como o número `5` não é do mesmo tipo que a string `"5"`, o resultado é `true`.
+
+---
+
+## Operadores unários
+
+Operadores unários atuam em um **único** operando para realizar operações como conversão de tipo, manipulação de valor ou verificação de condições.
+
+### Mais unário (`+`)
+
+Converte o operando em número. Se já for número, permanece inalterado.
+
+```js
+const str = '42';
+const strToNum = +str;
+
+console.log(strToNum);        // 42
+console.log(typeof str);      // string
+console.log(typeof strToNum); // number
+```
+
+### Negação unária (`-`)
+
+Funciona como o mais unário, mas inverte o sinal.
+
+```js
+const str = '42';
+const strToNegativeNum = -str;
+
+console.log(strToNegativeNum);        // -42
+console.log(typeof str);              // string
+console.log(typeof strToNegativeNum); // number
+```
+
+### NOT lógico (`!`)
+
+Inverte o valor booleano do operando: `true` vira `false` e vice-versa.
+
+```js
+let isOnline = true;
+console.log(!isOnline); // false
+
+let isOffline = false;
+console.log(!isOffline); // true
+```
+
+### NOT bit a bit (`~`)
+
+Inverte a representação binária de um número (todos os `1` viram `0` e vice-versa).
+
+```js
+let a = 5;
+console.log(~a); // -6
+```
+
+`~5` resulta em `-6` porque equivale a `-(5 + 1)`, devido à representação em **complemento de dois** (a forma que os computadores usam para representar números negativos em binário).
+
+### `void`
+
+Avalia uma expressão e retorna `undefined`.
+
+```js
+const result = void (2 + 2);
+console.log(result); // undefined
+```
+
+Também é usado em hyperlinks para evitar a navegação:
+
+```html
+<a href="javascript:void(0);">Click Me</a>
+```
+
+### `typeof`
+
+Retorna o tipo do operando como uma string.
+
+```js
+const value = 'Hello world';
+console.log(typeof value); // string
+```
+
+---
+
+## Bits e binário
+
+Operadores bit a bit trabalham nas representações binárias dos números. Um **bit** é a unidade mais básica de informação e pode ter apenas dois valores: `0` ou `1`. **Binário** é um sistema numérico que usa apenas esses dois dígitos.
+
+### Como funciona o binário
+
+Por exemplo, a representação binária do número decimal `10` é `1010`. Cada dígito representa uma potência de 2, começando pelo dígito mais à direita:
+
+| Binário  | 1   | 0   | 1   | 0   |
+| -------- | --- | --- | --- | --- |
+| Potência | 2³  | 2²  | 2¹  | 2⁰  |
+| Valor    | 8   | 0   | 2   | 0   |
+
+Somando os valores da última linha: `8 + 0 + 2 + 0 = 10`.
+
+### Operadores bit a bit
+
+O JavaScript fornece vários operadores bit a bit: AND (`&`), OR (`|`), XOR (`^`), NOT (`~`), deslocamento à esquerda (`<<`) e deslocamento à direita (`>>`).
+
+#### AND (`&`)
+
+Retorna `1` em cada posição em que **ambos** os bits são `1`:
+
+```js
+let a = 5; // Binário: 101
+let b = 3; // Binário: 011
+console.log(a & b); // 1 (Binário: 001)
+```
+
+Apenas o bit mais à direita é `1` em ambos os números.
+
+#### OR (`|`)
+
+Retorna `1` em cada posição em que **pelo menos um** dos bits é `1`:
+
+```js
+let a = 5; // Binário: 101
+let b = 3; // Binário: 011
+console.log(a | b); // 7 (Binário: 111)
+```
+
+O resultado é `7` (`111`) porque cada posição tem pelo menos um `1`.
+
+#### XOR (`^`)
+
+Retorna `1` em cada posição em que os bits são **diferentes** (um `1` e um `0`):
+
+```js
+let a = 5; // Binário: 101
+let b = 3; // Binário: 011
+console.log(a ^ b); // 6 (Binário: 110)
+```
+
+O resultado é `6` (`110`) porque o **segundo e o terceiro** bits, da direita para a esquerda, são diferentes nos dois números (o bit mais à direita é `1` em ambos, então resulta em `0`).
+
+#### NOT (`~`)
+
+Inverte todos os bits do operando:
+
+```js
+let a = 5; // Binário: 101
+console.log(~a); // -6
+```
+
+O resultado surpreende por causa da representação em complemento de dois para números negativos.
+
+#### Deslocamento à esquerda (`<<`)
+
+Desloca todos os bits para a esquerda por um número de posições, o que **multiplica** o número por 2 a cada deslocamento:
+
+```js
+let a = 5; // Binário: 101
+console.log(a << 1); // 10 (Binário: 1010)
+```
+
+#### Deslocamento à direita (`>>`)
+
+Desloca todos os bits para a direita, **dividindo** o número por 2 (arredondando para baixo):
+
+```js
+let a = 5; // Binário: 101
+console.log(a >> 1); // 2 (Binário: 10)
+```
+
+---
+
+## Estruturas condicionais
+
+Instruções condicionais permitem tomar decisões no código, fazendo o programa seguir caminhos diferentes conforme certas condições. Vamos ver `if`, `else if`, `else` e o operador ternário.
+
+### Valores truthy e falsy
+
+Uma declaração `if` recebe uma condição e executa um bloco de código se ela for verdadeira.
+
+**Valores truthy** são avaliados como `true` em um contexto booleano:
+
+- strings não vazias (por exemplo, `"hello"`)
+- qualquer número diferente de `0` e `-0` (por exemplo, `4`, `-5`)
+- arrays
+- objetos
+- o booleano `true`
+
+**Valores falsy** são avaliados como `false`. O JavaScript tem poucos, o que facilita memorizá-los:
+
+- o booleano `false`
+- `0` (zero)
+- `""` (string vazia)
+- `null`
+- `undefined`
+- `NaN` (Not a Number)
+
+### A declaração `if`
+
+```js
+if (null) {
+  console.log("This will not run.");
+}
+
+if ("freeCodeCamp") {
+  console.log("This will run.");
+}
+```
+
+Como `null` é falsy, o primeiro bloco nunca é executado. Já `"freeCodeCamp"` é truthy, então a segunda mensagem é registrada no console.
+
+Usando um operador de comparação para verificar a elegibilidade para votar:
+
+```js
+const age = 22;
+
+if (age >= 18) {
+  console.log("You're eligible to vote"); // You're eligible to vote
+}
+```
+
+Como `age` é `22` (maior ou igual a `18`), a condição é `true`. Se `age` fosse `15`, a condição seria `false` e nada seria registrado:
+
+```js
+const age = 15;
+
+if (age >= 18) {
+  console.log("You're eligible to vote"); // não executa: age é menor que 18
+}
+```
+
+### A cláusula `else`
+
+Quando a condição é `false`, o bloco `else` é executado:
+
+```js
+const age = 15;
+
+if (age >= 18) {
+  console.log("You're eligible to vote");
+} else {
+  console.log("You're not eligible to vote"); // You're not eligible to vote
+}
+```
+
+### O bloco `else if`
+
+Para verificar múltiplas condições, use `else if` — assim o programa pode escolher entre mais de dois caminhos:
+
+```js
+const score = 87;
+
+if (score >= 90) {
+  console.log('You got an A');
+} else if (score >= 80) {
+  console.log('You got a B'); // You got a B
+} else if (score >= 70) {
+  console.log('You got a C');
+} else {
+  console.log('You failed! You need to study more!');
+}
+```
+
+Como `score` é `87`, a mensagem `You got a B` é registrada no console.
+
+### O operador ternário
+
+É uma forma compacta de escrever um `if/else` simples. Tem três partes: uma condição, um resultado se verdadeiro e um resultado se falso:
+
+```js
+condition ? expressionIfTrue : expressionIfFalse;
+```
+
+Exemplo com temperatura em Celsius:
+
+```js
+const temperature = 30;
+const weather = temperature > 25 ? 'sunny' : 'cool';
+
+console.log(`It's a ${weather} day!`);
+```
+
+Se `temperature` for maior que `25`, registra `It's a sunny day!`. Caso contrário, registra `It's a cool day!`.
