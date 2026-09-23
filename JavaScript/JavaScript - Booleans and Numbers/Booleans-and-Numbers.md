@@ -972,3 +972,310 @@ console.log(`It's a ${weather} day!`);
 ```
 
 Se `temperature` for maior que `25`, registra `It's a sunny day!`. Caso contrário, registra `It's a cool day!`.
+
+---
+
+## O objeto `Math`
+
+Embora os operadores aritméticos básicos deem conta de cálculos simples, o JavaScript oferece o objeto embutido `Math` para desafios matemáticos mais complexos. Ele traz uma variedade de métodos para cálculos avançados e manipulação de números.
+
+### `Math.random()`
+
+Gera um número de ponto flutuante aleatório entre `0` (inclusivo) e `1` (exclusivo) — pode ser `0`, mas nunca chega a `1`.
+
+```js
+const randomNum = Math.random();
+
+console.log(randomNum);
+// qualquer número entre 0 e 1 — 0 inclusivo e 1 exclusivo
+```
+
+### `Math.min()` e `Math.max()`
+
+Recebem um conjunto de números e retornam, respectivamente, o menor e o maior valor:
+
+```js
+const smallest = Math.min(1, 5, 3, 9);
+console.log(smallest); // 1
+
+const largest = Math.max(1, 5, 3, 9);
+console.log(largest); // 9
+```
+
+### `Math.ceil()`, `Math.floor()` e `Math.round()`
+
+`Math.ceil()` arredonda **para cima** até o inteiro mais próximo:
+
+```js
+console.log(Math.ceil(4.3)); // 5
+```
+
+`Math.floor()` arredonda **para baixo**:
+
+```js
+console.log(Math.floor(4.7)); // 4
+```
+
+`Math.round()` é o híbrido dos dois: arredonda para o inteiro mais próximo, levando em conta a casa decimal:
+
+```js
+console.log(Math.round(2.3)); // 2
+console.log(Math.round(4.5)); // 5
+console.log(Math.round(4.8)); // 5
+```
+
+Se a casa decimal for menor que `5`, arredonda para baixo; se for `5` ou maior, para cima.
+
+### Gerando um número inteiro aleatório entre dois valores
+
+Uma aplicação prática de `Math.floor()` com `Math.random()`:
+
+```js
+const max = 10;
+const min = 5;
+const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+console.log(randomNum);
+```
+
+Gerar um número aleatório entre `1` e `20` ficaria assim:
+
+```js
+const randomNumBtw1And20 = Math.floor(Math.random() * 20) + 1;
+console.log(randomNumBtw1And20);
+```
+
+### `Math.trunc()`
+
+Remove a parte decimal, retornando apenas a porção inteira, **sem** arredondar:
+
+```js
+console.log(Math.trunc(2.9)); // 2
+console.log(Math.trunc(9.1)); // 9
+```
+
+### `Math.sqrt()` e `Math.cbrt()`
+
+Retornam a raiz quadrada e a raiz cúbica de um número, respectivamente:
+
+```js
+console.log(Math.sqrt(81)); // 9
+console.log(Math.cbrt(27)); // 3
+```
+
+### `Math.abs()`
+
+Retorna o valor absoluto de um número, transformando negativos em positivos:
+
+```js
+console.log(Math.abs(-5)); // 5
+console.log(Math.abs(5));  // 5
+```
+
+### `Math.pow()`
+
+Recebe dois números e eleva o primeiro à potência do segundo:
+
+```js
+console.log(Math.pow(2, 3)); // 8
+console.log(Math.pow(8, 2)); // 64
+```
+
+---
+
+## Como funciona o `isNaN()`
+
+`NaN` significa "Not a Number". É um valor especial que representa um resultado numérico não representável ou indefinido. `NaN` é uma propriedade do objeto global e, curiosamente, seu tipo também é `Number`.
+
+Normalmente é o resultado de operações que deveriam retornar um número, mas não conseguem produzir um valor numérico significativo:
+
+```js
+let result = 0 / 0;
+console.log(result); // NaN
+```
+
+Dividir zero por zero é matematicamente indefinido, então o JavaScript retorna `NaN`. Uma propriedade peculiar do `NaN` é que ele **não é igual a nada**, nem a si mesmo:
+
+```js
+console.log(NaN === NaN); // false
+```
+
+Por isso, verificar `NaN` com operadores de comparação padrão é inviável. Para resolver, o JavaScript fornece a função `isNaN()`. É importante entender como ela funciona, pois pode produzir resultados inesperados:
+
+```js
+console.log(isNaN(NaN));       // true
+console.log(isNaN(undefined)); // true
+console.log(isNaN({}));        // true
+
+console.log(isNaN(true));      // false
+console.log(isNaN(null));      // false
+console.log(isNaN(37));        // false
+
+console.log(isNaN("37"));      // false: "37" é convertido para 37
+console.log(isNaN("37.37"));   // false: "37.37" é convertido para 37.37
+console.log(isNaN(""));        // false: string vazia é convertida para 0
+console.log(isNaN(" "));       // false: string com espaço é convertida para 0
+
+console.log(isNaN("blabla"));  // true: "blabla" não é um número
+```
+
+Como você pode ver, `isNaN()` primeiro tenta **converter** o parâmetro para número. Se não conseguir, retorna `true`. Isso pode levar a resultados surpreendentes, especialmente com strings que podem ser convertidas em números.
+
+Devido a essas inconsistências, o ES6 (a sexta edição do JavaScript, lançada em 2015) introduziu o `Number.isNaN()`. Esse método **não** converte o parâmetro antes de testar — retorna `true` apenas se o valor for exatamente `NaN`:
+
+```js
+console.log(Number.isNaN(NaN));        // true
+console.log(Number.isNaN(Number.NaN)); // true
+console.log(Number.isNaN(0 / 0));      // true
+
+console.log(Number.isNaN("NaN"));      // false
+console.log(Number.isNaN(undefined));  // false
+console.log(Number.isNaN({}));         // false
+console.log(Number.isNaN("blabla"));   // false
+```
+
+O `Number.isNaN()` é uma forma mais confiável de verificar `NaN`, evitando a coerção de tipo que a função global `isNaN()` faz. Na prática, ao lidar com operações numéricas ou entradas do usuário, muitas vezes é necessário verificar `NaN` para tratar erros adequadamente:
+
+```js
+let a = 0;
+let b = 0;
+let result = a / b;
+
+if (Number.isNaN(result)) {
+  result = "Error: Division resulted in NaN";
+}
+
+console.log(result); // "Error: Division resulted in NaN"
+```
+
+---
+
+## Comparações com `null` e `undefined`
+
+Em JavaScript, `null` e `undefined` são dois tipos distintos que representam a ausência de um valor, mas se comportam de forma diferente em comparações.
+
+- **`undefined`** — uma variável é `undefined` quando foi declarada mas não recebeu um valor. É o valor padrão de variáveis não inicializadas e de parâmetros de função sem argumento.
+- **`null`** — é um valor de atribuição que representa uma "não-valor" **deliberada**, usado para indicar que uma variável intencionalmente não tem valor.
+
+Com o operador de igualdade (`==`), que faz coerção de tipo, `null` e `undefined` são considerados iguais:
+
+```js
+console.log(null == undefined); // true
+```
+
+Já com o operador de igualdade estrita (`===`), que verifica valor **e** tipo sem coerção, eles não são iguais:
+
+```js
+console.log(null === undefined); // false
+```
+
+Ao comparar `null` ou `undefined` com outros valores usando `==`, o comportamento pode surpreender:
+
+```js
+console.log(null == 0);       // false
+console.log(null == '');      // false
+console.log(undefined == 0);  // false
+console.log(undefined == ''); // false
+```
+
+Essas comparações retornam `false` porque `null` e `undefined` só são iguais entre si (e a si mesmos) com o operador `==`. O comportamento do `null` em outras comparações é particularmente complicado:
+
+```js
+console.log(null > 0);  // false
+console.log(null == 0); // false
+console.log(null >= 0); // true
+```
+
+> Repare no detalhe: `null >= 0` é `true`, mas `null == 0` é `false`. Isso acontece porque `>=` converte `null` para `0` (comparação numérica), enquanto `==` não faz essa conversão.
+
+Já o `undefined` sempre é convertido para `NaN` em contextos numéricos, então todas as comparações numéricas com ele retornam `false`:
+
+```js
+console.log(undefined > 0);  // false
+console.log(undefined < 0);  // false
+console.log(undefined == 0); // false
+```
+
+Diante dessas nuances, geralmente é recomendado usar o operador de igualdade estrita (`===`) ao comparar valores, especialmente com `null` e `undefined`, para evitar coerções inesperadas e tornar o código mais previsível.
+
+---
+
+## Declarações `switch`
+
+As declarações `switch` e as cadeias `if/else if/else` são estruturas de controle de fluxo que executam diferentes blocos de código conforme certas condições — mas têm características e casos de uso distintos.
+
+Uma declaração `switch` avalia uma expressão e compara seu valor com uma série de cláusulas `case`. Quando há correspondência, o bloco associado é executado:
+
+```js
+switch (expression) {
+  case value1:
+    // código executado se expression === value1
+    break;
+  case value2:
+    // código executado se expression === value2
+    break;
+  default:
+    // código executado se expression não corresponder a nenhum case
+}
+```
+
+A instrução `break` ao final de cada `case` é crucial: ela faz o programa sair do bloco `switch` assim que um `case` correspondente é executado. Sem ela, o programa continuaria executando os casos seguintes — um comportamento conhecido como **fall-through**.
+
+As declarações `switch` são tipicamente usadas ao comparar uma **única** variável com múltiplos valores possíveis:
+
+```js
+let dayOfWeek = 3;
+
+switch (dayOfWeek) {
+  case 1:
+    console.log("It's Monday! Time to start the week strong.");
+    break;
+  case 2:
+    console.log("It's Tuesday! Keep the momentum going.");
+    break;
+  case 3:
+    console.log("It's Wednesday! We're halfway there.");
+    break;
+  case 4:
+    console.log("It's Thursday! Almost the weekend.");
+    break;
+  case 5:
+    console.log("It's Friday! The weekend is near.");
+    break;
+  case 6:
+    console.log("It's Saturday! Enjoy your weekend.");
+    break;
+  case 7:
+    console.log("It's Sunday! Rest and recharge.");
+    break;
+  default:
+    console.log("Invalid day! Please enter a number between 1 and 7.");
+}
+```
+
+Já as cadeias `if/else if` são mais **flexíveis**: podem avaliar condições complexas e variáveis diferentes em cada cláusula, o que as torna adequadas para uma gama mais ampla de cenários:
+
+```js
+let creditScore = 720;
+let annualIncome = 60000;
+let loanAmount = 200000;
+
+let eligibilityStatus;
+
+if (creditScore >= 750 && annualIncome >= 80000) {
+  eligibilityStatus = "Eligible for premium loan rates.";
+} else if (creditScore >= 700 && annualIncome >= 50000) {
+  eligibilityStatus = "Eligible for standard loan rates.";
+} else if (creditScore >= 650 && annualIncome >= 40000) {
+  eligibilityStatus = "Eligible for subprime loan rates.";
+} else if (creditScore < 650) {
+  eligibilityStatus = "Not eligible due to low credit score.";
+} else {
+  eligibilityStatus = "Not eligible due to insufficient income.";
+}
+
+console.log(eligibilityStatus);
+```
+
+Como aqui lidamos com avaliações lógicas mais complexas e múltiplas variáveis, o `if/else` é a melhor escolha.
+
+> Vale notar que o `switch` em JavaScript usa comparação estrita (`===`), ou seja, **não** realiza coerção de tipo — uma vantagem em previsibilidade e para evitar bugs sutis.
