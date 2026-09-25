@@ -17,6 +17,7 @@ Este repositório é dedicado à minha jornada de aprendizado e aplicação no d
   - `JavaScript - Basics/` → fundamentos e manipulação de strings (trim, slice, includes, replace, template literals) + anotações de estudo  
   - `JavaScript - Booleans and Numbers/` → tipo Number, operadores aritméticos, coerção de tipo, precedência e atribuição composta (anotações de estudo)  
   - `JavaScript - Functions/` → declaração de funções, arrow functions, escopo (global/local/bloco), retorno de valores e exercícios práticos  
+  - `JavaScript - Arrays/` → características, acesso e atualização, push/pop/shift/unshift, arrays bidimensionais, desestruturação e inversão de strings + exercícios práticos  
 - `Projects/` → projetos realizados 
 
 ## 🎯 Objetivo
