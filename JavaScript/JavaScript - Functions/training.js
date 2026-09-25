@@ -143,4 +143,3 @@ function confirmEnding(stringC, stringR){
 }
 
 console.log(confirmEnding("It's sunny here", "here"));
-

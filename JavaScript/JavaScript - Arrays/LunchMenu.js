@@ -67,12 +67,3 @@ function showLunchMenu(lunchMenu){
     return console.log("The menu is empty.");
   }
 }
-
-
-
-
-
-
-
-
-

@@ -36,4 +36,3 @@ const endPunctuation = message.slice(-1);
 console.log(`The ending punctuation mark is a "${endPunctuation}"`);
 
 console.log("Workshop complete! You now know how to use includes() and slice().")
-
