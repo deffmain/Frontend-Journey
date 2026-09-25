@@ -10,6 +10,8 @@
  *                      e operadores lógicos (&&) e de comparação (>=)
  * - convertCtoF()    → converte uma temperatura de Celsius para Fahrenheit
  * - isLeapYear()     → verifica se um ano é bissexto usando o operador de resto (%)
+ * - truncateString() → corta a string num tamanho máximo e acrescenta "..." (slice, trim)
+ * - confirmEnding()  → verifica se uma string termina com outra usando slice negativo
  */
 
 // Boolean validator
@@ -112,3 +114,33 @@ let year = 2024;
 const result = isLeapYear(year);
 
 console.log(result);
+
+
+console.log("\n=========================\n String truncate\n=========================")
+
+function truncateString(string, number){
+  if(string.length > number){
+    return string.slice(0, number).trim()+"...";
+  }else{
+    return string;
+  }
+}
+
+let phrase = "A-tisket a-tasket A green and yellow basket";
+
+console.log(truncateString(phrase, "A-tisket a-tasket A green and yellow basket".length));
+
+
+console.log("\n=========================\n String verify ends\n=========================")
+
+function confirmEnding(stringC, stringR){
+  let stringEx = stringC.slice(-stringR.length);
+  if(stringEx === stringR){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+console.log(confirmEnding("It's sunny here", "here"));
+
