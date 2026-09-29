@@ -18,6 +18,7 @@ Este repositório é dedicado à minha jornada de aprendizado e aplicação no d
   - `JavaScript - Booleans and Numbers/` → tipo Number, operadores aritméticos, coerção de tipo, precedência e atribuição composta (anotações de estudo)  
   - `JavaScript - Functions/` → declaração de funções, arrow functions, escopo (global/local/bloco), retorno de valores e exercícios práticos  
   - `JavaScript - Arrays/` → características, acesso e atualização, push/pop/shift/unshift, arrays bidimensionais, desestruturação e inversão de strings + exercícios práticos  
+  - `JavaScript - Objects/` → criação de objetos, notação de ponto e de colchetes, remoção e verificação de propriedades, objetos aninhados e arrays dentro de objetos (anotações de estudo)  
 - `Projects/` → projetos realizados 
 
 ## 🎯 Objetivo
