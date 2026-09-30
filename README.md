@@ -11,6 +11,8 @@ Este repositório é um caderno de estudos, não um projeto de produção. Cada 
 
 O objetivo é aprender, errar, corrigir e deixar a evolução registrada.
 
+> **Ao ler os exercícios:** cada exercício implementa exatamente o que o enunciado do curso pede. Por isso, algumas soluções podem parecer erradas ou incompletas se forem lidas como código de produção. Um exemplo: uma validação que trata como erro um objeto com propriedades extras, porque era isso que o exercício pedia. Dentro do contexto do exercício, elas estão certas.
+
 ## 🤖 Como uso IA neste repositório
 
 Uso uma IA (Claude, da Anthropic, pelo Claude Code) como apoio ao estudo. Ela **não escreve os meus códigos**.
@@ -18,7 +20,7 @@ Uso uma IA (Claude, da Anthropic, pelo Claude Code) como apoio ao estudo. Ela **
 | Papel         | O que a IA faz                                                                                                                                                                   |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Orientadora   | Explica conceitos e tira dúvidas quando eu peço.                                                                                                                                 |
-| Revisora      | Revisa as anotações que faço nas aulas: organiza, formata e corrige erros de informação, conferindo os exemplos na prática. Testa os exercícios e aponta bugs, mostrando o caso que falha. |
+| Revisora      | Revisa as anotações que faço nas aulas: organiza, formata e corrige erros de informação, conferindo os exemplos na prática. Testa os exercícios e aponta possíveis bugs, mostrando o caso que falha, e eu confiro com o enunciado se é mesmo um erro. |
 | Padronizadora | Mantém o padrão dos documentos, escreve o comentário de cabeçalho que descreve o que cada exercício pratica, padroniza as mensagens de commit e mantém este README atualizado. |
 
 **O que a IA não faz:**
@@ -52,8 +54,8 @@ Uso uma IA (Claude, da Anthropic, pelo Claude Code) como apoio ao estudo. Ela **
 
 1. Assisto às aulas e faço as anotações.
 2. Resolvo os exercícios práticos.
-3. A IA revisa as anotações e os exercícios e aponta o que está errado.
-4. Eu corrijo os exercícios, quando preciso, e o material é publicado aqui.
+3. A IA revisa as anotações e os exercícios e aponta o que pode estar errado.
+4. Eu confiro com o enunciado, corrijo os exercícios quando preciso, e o material é publicado aqui.
 
 ## 🎯 Objetivo
 

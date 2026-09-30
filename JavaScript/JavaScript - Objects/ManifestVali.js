@@ -11,6 +11,10 @@
  *
  * Apoio: spread ({...manifest}) para copiar o objeto sem alterar o original, typeof,
  * Number.isInteger(), Number.isNaN(), trim(), Object.keys() e o operador delete.
+ *
+ * Observação: a validação segue exatamente o que o enunciado do exercício pede.
+ * Lida como código de produção, ela pode parecer errada: por exemplo, um manifesto
+ * com propriedades além das cinco obrigatórias é tratado como erro.
  */
 
 function normalizeUnits(manifest){
