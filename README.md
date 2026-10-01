@@ -47,7 +47,7 @@ Uso uma IA (Claude, da Anthropic, pelo Claude Code) como apoio ao estudo. Ela **
   - `JavaScript - Booleans and Numbers/` → tipo Number, operadores (aritméticos, de comparação, unários e bit a bit), coerção de tipo, precedência, condicionais (if/else, ternário, switch), objeto Math e isNaN + exercícios práticos  
   - `JavaScript - Functions/` → declaração de funções, arrow functions, escopo (global/local/bloco), retorno de valores e exercícios práticos  
   - `JavaScript - Arrays/` → características, acesso e atualização, push/pop/shift/unshift, arrays bidimensionais, desestruturação e inversão de strings + exercícios práticos  
-  - `JavaScript - Objects/` → criação de objetos, notação de ponto e de colchetes, remoção e verificação de propriedades, objetos aninhados e arrays dentro de objetos + exercícios práticos  
+  - `JavaScript - Objects/` → criação de objetos, notação de ponto e de colchetes, remoção e verificação de propriedades, objetos aninhados e arrays dentro de objetos, tipos primitivos e não primitivos, funções e métodos, JSON (stringify/parse), encadeamento opcional e desestruturação + exercícios práticos  
 - `Projects/` → projetos realizados
 
 ## 🔄 Como estudo
