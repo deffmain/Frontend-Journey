@@ -13,6 +13,10 @@
  *
  * Apoio: questions é um array de objetos; cada pergunta tem category, question, choices
  * (três alternativas) e answer. O arquivo só declara as funções, sem chamá-las.
+ *
+ * Observação: getRandomComputerChoice() sorteia com um 3 fixo (Math.random() * 3), e não
+ * com o tamanho do array, porque o enunciado garante que toda pergunta tem exatamente
+ * três alternativas.
  */
 
 const questions = [
