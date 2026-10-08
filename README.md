@@ -48,6 +48,7 @@ Uso uma IA (Claude, da Anthropic, pelo Claude Code) como apoio ao estudo. Ela **
   - `JavaScript - Functions/` → declaração de funções, arrow functions, escopo (global/local/bloco), retorno de valores e exercícios práticos  
   - `JavaScript - Arrays/` → características, acesso e atualização, push/pop/shift/unshift, arrays bidimensionais, desestruturação e inversão de strings + exercícios práticos  
   - `JavaScript - Objects/` → criação de objetos, notação de ponto e de colchetes, remoção e verificação de propriedades, objetos aninhados e arrays dentro de objetos, tipos primitivos e não primitivos, funções e métodos, JSON (stringify/parse), encadeamento opcional e desestruturação + exercícios práticos  
+  - `JavaScript - Loops/` → loop for, loops infinitos e aninhados, for...of (arrays, strings e arrays de objetos), while e do...while, break e continue com labels + exercícios práticos  
 - `Projects/` → projetos realizados
 
 ## 🔄 Como estudo
