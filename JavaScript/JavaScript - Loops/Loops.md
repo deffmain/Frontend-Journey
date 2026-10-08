@@ -165,7 +165,7 @@ Loops `for...of` são realmente úteis quando você precisa iterar sobre valores
 
 ## Loops `while` e `do...while`
 
-Nas lições anteriores, você aprendeu como trabalhar com loops `for`, loops `for...in` e loops `for...of`. Nesta lição, você aprenderá sobre o loop `while` e o loop `do...while`.
+Nesta lição, você aprenderá sobre o loop `while` e o loop `do...while`.
 
 ### `while`
 
